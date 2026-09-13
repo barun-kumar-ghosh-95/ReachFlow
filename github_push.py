@@ -29,7 +29,7 @@ def commit_all_files(repo_path: Path) -> str:
             
     dulwich.porcelain.add(repo, paths=file_list)
     commit_id = dulwich.porcelain.commit(repo, message=b"feat: Smart Demand Forecasting Major Project Web App & ML Pipeline", author=b"Antigravity AI <ai@antigravity.dev>")
-    print(f"✅ Committed {len(file_list)} files locally. Commit hash: {commit_id.decode()}")
+    print(f"[OK] Committed {len(file_list)} files locally. Commit hash: {commit_id.decode()}")
     return commit_id.decode()
 
 def push_via_github_api(token: str, repo_name: str = "smart-demand-forecasting"):
@@ -42,11 +42,11 @@ def push_via_github_api(token: str, repo_name: str = "smart-demand-forecasting")
     # 1. Get user info
     user_res = requests.get("https://api.github.com/user", headers=headers)
     if user_res.status_code != 200:
-        print("❌ Invalid GitHub token or API authentication failed.")
+        print("[ERROR] Invalid GitHub token or API authentication failed.")
         return False
         
     username = user_res.json().get("login")
-    print(f"👤 Authenticated as GitHub user: {username}")
+    print(f"[OK] Authenticated as GitHub user: {username}")
     
     # 2. Create repo if not exists
     create_payload = {
@@ -57,12 +57,12 @@ def push_via_github_api(token: str, repo_name: str = "smart-demand-forecasting")
     }
     repo_res = requests.post("https://api.github.com/user/repos", headers=headers, json=create_payload)
     if repo_res.status_code in [201, 422]:  # 201 Created, 422 Already exists
-        print(f"📦 Repository '{username}/{repo_name}' is ready on GitHub!")
+        print(f"[OK] Repository '{username}/{repo_name}' is ready on GitHub!")
     else:
-        print(f"⚠️ Repo status: {repo_res.status_code} - {repo_res.text}")
+        print(f"[WARN] Repo status: {repo_res.status_code} - {repo_res.text}")
 
     repo_url = f"https://github.com/{username}/{repo_name}.git"
-    print(f"🔗 Repository URL: {repo_url}")
+    print(f"[LINK] Repository URL: {repo_url}")
     return repo_url
 
 if __name__ == "__main__":
