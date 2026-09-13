@@ -1,0 +1,568 @@
+{
+  "festivals": [
+    {
+      "festival_name": "Dussehra",
+      "festival_category": "Major",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 27470.1,
+      "lift_factor": 1.502,
+      "lift_pct": 50.2
+    },
+    {
+      "festival_name": "Diwali",
+      "festival_category": "Major",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 23179.1,
+      "lift_factor": 1.268,
+      "lift_pct": 26.8
+    },
+    {
+      "festival_name": "Raksha Bandhan",
+      "festival_category": "Religious",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 15501.1,
+      "lift_factor": 0.848,
+      "lift_pct": -15.2
+    },
+    {
+      "festival_name": "Eid al-Fitr",
+      "festival_category": "Religious",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 14825.9,
+      "lift_factor": 0.811,
+      "lift_pct": -18.9
+    },
+    {
+      "festival_name": "Christmas",
+      "festival_category": "Major",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 14238.3,
+      "lift_factor": 0.779,
+      "lift_pct": -22.1
+    },
+    {
+      "festival_name": "Holi",
+      "festival_category": "Major",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 12514.8,
+      "lift_factor": 0.684,
+      "lift_pct": -31.6
+    },
+    {
+      "festival_name": "Republic Day",
+      "festival_category": "National",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 12408.8,
+      "lift_factor": 0.679,
+      "lift_pct": -32.1
+    },
+    {
+      "festival_name": "Independence Day",
+      "festival_category": "National",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 11179.0,
+      "lift_factor": 0.611,
+      "lift_pct": -38.9
+    },
+    {
+      "festival_name": "Navratri",
+      "festival_category": "Religious",
+      "normal_avg_demand": 18284.9,
+      "festival_avg_demand": 7285.0,
+      "lift_factor": 0.398,
+      "lift_pct": -60.2
+    }
+  ],
+  "calendar": [
+    {
+      "Date": "2010-12-11",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-12",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-13",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-14",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-15",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-16",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-17",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-18",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-19",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-20",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-21",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-22",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-23",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-24",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-25",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-26",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-27",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-28",
+      "festival_name": "Christmas",
+      "lift_factor": "1.45"
+    },
+    {
+      "Date": "2010-12-29",
+      "festival_name": "New Year",
+      "lift_factor": "1.25"
+    },
+    {
+      "Date": "2010-12-30",
+      "festival_name": "New Year",
+      "lift_factor": "1.25"
+    },
+    {
+      "Date": "2010-12-31",
+      "festival_name": "New Year",
+      "lift_factor": "1.25"
+    },
+    {
+      "Date": "2011-01-01",
+      "festival_name": "New Year",
+      "lift_factor": "1.25"
+    },
+    {
+      "Date": "2011-01-02",
+      "festival_name": "New Year",
+      "lift_factor": "1.25"
+    },
+    {
+      "Date": "2011-01-03",
+      "festival_name": "New Year",
+      "lift_factor": "1.25"
+    },
+    {
+      "Date": "2011-01-24",
+      "festival_name": "Republic Day",
+      "lift_factor": "1.05"
+    },
+    {
+      "Date": "2011-01-25",
+      "festival_name": "Republic Day",
+      "lift_factor": "1.05"
+    },
+    {
+      "Date": "2011-01-26",
+      "festival_name": "Republic Day",
+      "lift_factor": "1.05"
+    },
+    {
+      "Date": "2011-01-27",
+      "festival_name": "Republic Day",
+      "lift_factor": "1.05"
+    },
+    {
+      "Date": "2011-02-28",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-01",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-02",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-03",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-04",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-05",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-06",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-07",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-08",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-09",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-03-10",
+      "festival_name": "Holi",
+      "lift_factor": "1.22"
+    },
+    {
+      "Date": "2011-04-22",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-23",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-24",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-25",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-26",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-27",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-28",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-29",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-04-30",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-01",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-02",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-03",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-04",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-05",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-06",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-05-07",
+      "festival_name": "Eid al-Fitr",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-08-08",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-09",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-10",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-11",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-12",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-13",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-14",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-15",
+      "festival_name": "Raksha Bandhan",
+      "lift_factor": "1.15"
+    },
+    {
+      "Date": "2011-08-16",
+      "festival_name": "Independence Day",
+      "lift_factor": "1.08"
+    },
+    {
+      "Date": "2011-09-28",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-09-29",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-09-30",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-01",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-02",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-03",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-04",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-05",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-06",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-07",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-08",
+      "festival_name": "Dussehra",
+      "lift_factor": "1.2"
+    },
+    {
+      "Date": "2011-10-09",
+      "festival_name": "Navratri",
+      "lift_factor": "1.18"
+    },
+    {
+      "Date": "2011-10-10",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-11",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-12",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-13",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-14",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-15",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-16",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-17",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-18",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-19",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-20",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-21",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-22",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-23",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-24",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-25",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-26",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-27",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-28",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-29",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-30",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    },
+    {
+      "Date": "2011-10-31",
+      "festival_name": "Diwali",
+      "lift_factor": "1.38"
+    }
+  ]
+}

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Demand Forecasting & Inventory Intelligence</title>
+  <meta name="description" content="Production AI Demand Forecasting & Inventory Intelligence Web Application powered by Real Kaggle E-Commerce Data.">
+  
+  <!-- Font Awesome & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js & Plugins -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+  <!-- Tailwind CSS CDN for Utility Classes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#090d16] text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Top Header Navigation -->
+  <header class="border-b border-slate-800/80 bg-slate-950/70 backdrop-blur-md sticky top-0 z-50 px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/20">
+        <i class="fa-solid fa-chart-line text-lg"></i>
+      </div>
+      <div>
+        <h1 class="text-xl font-bold font-['Outfit'] text-white tracking-wide flex items-center gap-2">
+          SMART DEMAND FORECASTING
+          <span class="text-xs px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-medium">REAL DATA (541k)</span>
+        </h1>
+        <p class="text-xs text-slate-400">Retail & E-Commerce Inventory Intelligence System · Major Project Standard</p>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="flex items-center gap-2 bg-slate-900/90 p-1.5 rounded-xl border border-slate-800">
+      <button class="nav-tab active" data-tab="overview">
+        <i class="fa-solid fa-gauge-high"></i> Overview
+      </button>
+      <button class="nav-tab" data-tab="forecasting">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> AI Forecasting
+      </button>
+      <button class="nav-tab" data-tab="festivals">
+        <i class="fa-solid fa-calendar-star"></i> Festival Lift
+      </button>
+      <button class="nav-tab" data-tab="inventory">
+        <i class="fa-solid fa-boxes-stacked"></i> Inventory Matrix
+      </button>
+      <button class="nav-tab" data-tab="simulator">
+        <i class="fa-solid fa-sliders"></i> Scenario Simulator
+      </button>
+    </nav>
+
+    <!-- Right Controls -->
+    <div class="flex items-center gap-3">
+      <label for="csv-upload-input" class="cursor-pointer px-3.5 py-2 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 flex items-center gap-2 transition-all">
+        <i class="fa-solid fa-upload text-sky-400"></i> Upload CSV
+      </label>
+      <input type="file" id="csv-upload-input" accept=".csv" class="hidden">
+      
+      <a href="https://github.com" target="_blank" class="w-9 h-9 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 flex items-center justify-center transition-all border border-slate-700" title="GitHub Repository">
+        <i class="fa-brands fa-github text-base"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 p-6 max-w-7xl w-full mx-auto space-y-6">
+
+    <!-- MODULE 1: EXECUTIVE OVERVIEW -->
+    <section id="mod-overview" class="tab-module space-y-6">
+      <!-- Metric Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        
+        <div class="glass-panel metric-card glass-panel-glow">
+          <div class="metric-title">
+            <span>Total Sales Revenue</span>
+            <i class="fa-solid fa-sack-dollar text-sky-400"></i>
+          </div>
+          <div class="metric-value text-sky-400" id="metric-revenue">$8,911,408</div>
+          <div class="metric-sub">
+            <i class="fa-solid fa-arrow-trend-up"></i> 522,710 Cleaned Transactions
+          </div>
+        </div>
+
+        <div class="glass-panel metric-card glass-panel-glow">
+          <div class="metric-title">
+            <span>Total Orders Processed</span>
+            <i class="fa-solid fa-cart-shopping text-violet-400"></i>
+          </div>
+          <div class="metric-value text-violet-400" id="metric-orders">19,960</div>
+          <div class="metric-sub">
+            <i class="fa-solid fa-check text-violet-400"></i> Dec 2010 – Dec 2011
+          </div>
+        </div>
+
+        <div class="glass-panel metric-card glass-panel-glow">
+          <div class="metric-title">
+            <span>Active Product SKUs</span>
+            <i class="fa-solid fa-barcode text-emerald-400"></i>
+          </div>
+          <div class="metric-value text-emerald-400" id="metric-skus">3,805</div>
+          <div class="metric-sub text-emerald-400">
+            <i class="fa-solid fa-layer-group"></i> 4,372 Customer Accounts
+          </div>
+        </div>
+
+        <div class="glass-panel metric-card glass-panel-glow">
+          <div class="metric-title">
+            <span>Critical Stockout Risk</span>
+            <i class="fa-solid fa-triangle-exclamation text-amber-400"></i>
+          </div>
+          <div class="metric-value text-amber-400" id="metric-risk-count">3 SKUs</div>
+          <div class="metric-sub text-amber-400">
+            <i class="fa-solid fa-bell"></i> Immediate Reorder Recommended
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Charts Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Monthly Revenue Trend Chart -->
+        <div class="glass-panel p-5 lg:col-span-2 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-white font-['Outfit']">Monthly Sales Revenue & Demand Trend</h2>
+              <p class="text-xs text-slate-400">Historical performance from Kaggle E-Commerce Dataset</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-full bg-sky-500/10 text-sky-400 text-xs font-semibold border border-sky-500/20">Monthly Resampled</span>
+          </div>
+          <div class="h-72 w-full">
+            <canvas id="chart-monthly-trend"></canvas>
+          </div>
+        </div>
+
+        <!-- Country Distribution -->
+        <div class="glass-panel p-5 space-y-4">
+          <div>
+            <h2 class="text-lg font-bold text-white font-['Outfit']">Top Revenue Countries</h2>
+            <p class="text-xs text-slate-400">Geographic market breakdown</p>
+          </div>
+          <div class="h-72 w-full flex items-center justify-center">
+            <canvas id="chart-country-donut"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Top SKUs Table -->
+      <div class="glass-panel p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-lg font-bold text-white font-['Outfit']">Top 10 Highest Revenue Products</h2>
+            <p class="text-xs text-slate-400">Ranked by total historical dollar volume</p>
+          </div>
+          <span class="text-xs text-slate-400">Showing top SKUs from 3,805 products</span>
+        </div>
+        
+        <div class="custom-table-container">
+          <table class="custom-table" id="table-top-products">
+            <thead>
+              <tr>
+                <th>SKU Code</th>
+                <th>Product Description</th>
+                <th>Units Sold</th>
+                <th>Avg Price</th>
+                <th>Total Revenue</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 2: AI DEMAND FORECASTING STUDIO -->
+    <section id="mod-forecasting" class="tab-module hidden space-y-6">
+      <div class="glass-panel p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="text-xl font-bold text-white font-['Outfit'] flex items-center gap-2">
+              <i class="fa-solid fa-brain text-sky-400"></i> AI Demand Forecast Engine
+            </h2>
+            <p class="text-xs text-slate-400">Time-series models evaluated with chronological split validation</p>
+          </div>
+
+          <!-- Controls -->
+          <div class="flex items-center gap-3">
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Model Selection</label>
+              <select id="select-model" class="bg-slate-900 border border-slate-700 text-white text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-sky-500">
+                <option value="XGBoost">XGBoost Regressor (Best Model)</option>
+                <option value="RandomForest">Random Forest</option>
+                <option value="LightGBM">LightGBM</option>
+                <option value="MovingAvg">Moving Average (7-Day)</option>
+                <option value="Naive">Naive Baseline</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs text-slate-400 block mb-1">Forecast Horizon</label>
+              <select id="select-horizon" class="bg-slate-900 border border-slate-700 text-white text-xs rounded-lg px-3 py-1.5 focus:outline-none focus:border-sky-500">
+                <option value="14">14 Days</option>
+                <option value="30" selected>30 Days</option>
+                <option value="60">60 Days</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Forecast Chart -->
+        <div class="h-80 w-full">
+          <canvas id="chart-forecast"></canvas>
+        </div>
+      </div>
+
+      <!-- Model Performance Comparison Leaderboard -->
+      <div class="glass-panel p-5 space-y-4">
+        <h3 class="text-base font-bold text-white font-['Outfit'] flex items-center gap-2">
+          <i class="fa-solid fa-trophy text-amber-400"></i> Model Validation Leaderboard
+        </h3>
+        
+        <div class="custom-table-container">
+          <table class="custom-table" id="table-leaderboard">
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Model Name</th>
+                <th>RMSE (Root Mean Sq Err)</th>
+                <th>MAE (Mean Abs Err)</th>
+                <th>MAPE (%)</th>
+                <th>sMAPE (%)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 3: FESTIVAL & SEASONALITY INTELLIGENCE -->
+    <section id="mod-festivals" class="tab-module hidden space-y-6">
+      <div class="glass-panel p-5 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-bold text-white font-['Outfit'] flex items-center gap-2">
+              <i class="fa-solid fa-fire text-rose-400"></i> Festival & Event Lift Analysis
+            </h2>
+            <p class="text-xs text-slate-400">Historical demand multipliers during major shopping festivals</p>
+          </div>
+          <span class="px-3 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-semibold border border-amber-500/20">
+            [SIMULATED] Festival Intelligence Layer
+          </span>
+        </div>
+
+        <!-- Festival Lift Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5" id="grid-festival-cards">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+
+      <div class="glass-panel p-5 space-y-4">
+        <h3 class="text-base font-bold text-white font-['Outfit']">Festival Lift Multiplier Breakdown</h3>
+        <div class="h-72 w-full">
+          <canvas id="chart-festival-bar"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 4: INVENTORY STOCKOUT MATRIX -->
+    <section id="mod-inventory" class="tab-module hidden space-y-6">
+      <div class="glass-panel p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div>
+            <h2 class="text-xl font-bold text-white font-['Outfit'] flex items-center gap-2">
+              <i class="fa-solid fa-boxes-stacked text-emerald-400"></i> Inventory Stockout & Safety Stock Matrix
+            </h2>
+            <p class="text-xs text-slate-400">Calculates Safety Stock (Z×σ×√L) and Reorder Points (ROP) to prevent stockouts</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <input type="text" id="search-inventory" placeholder="Search SKU or description..." class="bg-slate-900 border border-slate-700 text-white text-xs rounded-lg px-3 py-2 w-64 focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+
+        <!-- Inventory Table -->
+        <div class="custom-table-container">
+          <table class="custom-table" id="table-inventory">
+            <thead>
+              <tr>
+                <th>SKU</th>
+                <th>Description</th>
+                <th>Current Stock</th>
+                <th>Avg Daily Demand</th>
+                <th>Safety Stock</th>
+                <th>Reorder Point (ROP)</th>
+                <th>Coverage (Days)</th>
+                <th>Risk Level</th>
+                <th>Recommended Order</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE 5: WHAT-IF SCENARIO SIMULATOR -->
+    <section id="mod-simulator" class="tab-module hidden space-y-6">
+      <div class="glass-panel p-5 space-y-6">
+        <div>
+          <h2 class="text-xl font-bold text-white font-['Outfit'] flex items-center gap-2">
+            <i class="fa-solid fa-sliders text-violet-400"></i> What-If Supply Chain Simulator
+          </h2>
+          <p class="text-xs text-slate-400">Adjust demand spikes, lead time delays, and service levels to simulate inventory impact in real-time</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-900/60 p-5 rounded-xl border border-slate-800">
+          <!-- Slider 1 -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-300">Demand Surge %</span>
+              <span class="text-sky-400 font-bold" id="val-surge">+20%</span>
+            </div>
+            <input type="range" id="slide-surge" min="0" max="100" value="20" class="w-full">
+            <p class="text-[11px] text-slate-400">Simulate unexpected promotional or holiday demand spike</p>
+          </div>
+
+          <!-- Slider 2 -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-300">Supplier Lead Time Delay (Days)</span>
+              <span class="text-violet-400 font-bold" id="val-delay">+4 Days</span>
+            </div>
+            <input type="range" id="slide-delay" min="0" max="20" value="4" class="w-full">
+            <p class="text-[11px] text-slate-400">Simulate vendor supply chain or shipping delays</p>
+          </div>
+
+          <!-- Slider 3 -->
+          <div class="space-y-2">
+            <div class="flex justify-between text-xs font-semibold">
+              <span class="text-slate-300">Target Service Level %</span>
+              <span class="text-emerald-400 font-bold" id="val-service">95%</span>
+            </div>
+            <input type="range" id="slide-service" min="80" max="99" value="95" class="w-full">
+            <p class="text-[11px] text-slate-400">Desired order fulfillment confidence probability</p>
+          </div>
+        </div>
+
+        <!-- Simulation Results Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="glass-panel p-4 border-l-4 border-l-sky-500">
+            <div class="text-xs text-slate-400 uppercase font-semibold">New Rec. Safety Stock</div>
+            <div class="text-2xl font-bold text-sky-400 font-['Outfit'] mt-1" id="sim-safety-stock">1,480 Units</div>
+            <div class="text-xs text-slate-400 mt-1" id="sim-safety-diff">+280 units vs baseline</div>
+          </div>
+
+          <div class="glass-panel p-4 border-l-4 border-l-violet-500">
+            <div class="text-xs text-slate-400 uppercase font-semibold">New Reorder Point (ROP)</div>
+            <div class="text-2xl font-bold text-violet-400 font-['Outfit'] mt-1" id="sim-rop">4,920 Units</div>
+            <div class="text-xs text-slate-400 mt-1" id="sim-rop-diff">+1,120 units vs baseline</div>
+          </div>
+
+          <div class="glass-panel p-4 border-l-4 border-l-emerald-500">
+            <div class="text-xs text-slate-400 uppercase font-semibold">Estimated Stockout Risk</div>
+            <div class="text-2xl font-bold text-emerald-400 font-['Outfit'] mt-1" id="sim-risk-status">LOW RISK</div>
+            <div class="text-xs text-emerald-400 mt-1">Sufficient inventory buffer</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Purchase Order Drawer Modal -->
+  <div id="drawer-po" class="drawer-backdrop">
+    <div class="drawer-content space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+        <h3 class="text-lg font-bold text-white font-['Outfit'] flex items-center gap-2">
+          <i class="fa-solid fa-file-invoice text-emerald-400"></i> Generate Purchase Order
+        </h3>
+        <button id="close-drawer" class="text-slate-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Target Product SKU</label>
+          <input type="text" id="po-sku" readonly class="w-full bg-slate-900 border border-slate-800 text-white font-semibold text-sm rounded-lg p-2.5">
+        </div>
+
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Description</label>
+          <input type="text" id="po-desc" readonly class="w-full bg-slate-900 border border-slate-800 text-slate-300 text-xs rounded-lg p-2.5">
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="text-xs text-slate-400 block mb-1">Current Stock</label>
+            <input type="text" id="po-stock" readonly class="w-full bg-slate-900 border border-slate-800 text-slate-300 text-sm rounded-lg p-2.5">
+          </div>
+
+          <div>
+            <label class="text-xs text-slate-400 block mb-1">Reorder Point (ROP)</label>
+            <input type="text" id="po-rop" readonly class="w-full bg-slate-900 border border-slate-800 text-amber-400 font-bold text-sm rounded-lg p-2.5">
+          </div>
+        </div>
+
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Recommended Purchase Quantity</label>
+          <input type="number" id="po-qty" class="w-full bg-slate-900 border border-emerald-500/50 text-emerald-400 font-bold text-lg rounded-lg p-2.5">
+        </div>
+
+        <div>
+          <label class="text-xs text-slate-400 block mb-1">Supplier Lead Time (Days)</label>
+          <input type="number" id="po-lead" value="7" class="w-full bg-slate-900 border border-slate-800 text-white text-sm rounded-lg p-2.5">
+        </div>
+
+        <button id="btn-confirm-po" class="btn-primary w-full justify-center text-sm py-3 mt-4">
+          <i class="fa-solid fa-paper-plane"></i> Dispatch Purchase Order
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950/70 py-6 px-6 text-center text-xs text-slate-400">
+    Smart Demand Forecasting & Inventory Intelligence · Built with Python ML Pipeline & Modern Glassmorphism Web App · Ready for GitHub & Vercel
+  </footer>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+</body>
+</html>
