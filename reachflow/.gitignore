@@ -45,3 +45,6 @@ coverage/
 
 # Prisma
 prisma/generated/
+
+# Embedded PostgreSQL data (local dev only)
+.pgdata/

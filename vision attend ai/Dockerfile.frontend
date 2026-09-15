@@ -1,0 +1,17 @@
+# ---------- Frontend Builder ----------
+FROM node:20-alpine AS frontend-deps
+WORKDIR /app/frontend
+COPY frontend/package.json ./
+RUN npm install --no-audit --no-fund
+
+FROM node:20-alpine AS frontend-builder
+WORKDIR /app/frontend
+COPY --from=frontend-deps /app/frontend/node_modules ./node_modules
+COPY frontend/ ./
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    NODE_ENV=production
+RUN npm run build
+
+EXPOSE 3000
+
+CMD ["npm", "run", "start"]
