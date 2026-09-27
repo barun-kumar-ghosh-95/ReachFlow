@@ -3,20 +3,6 @@
 > **"One place to reach your audience."**  
 > Create, personalize, schedule, and analyze WhatsApp & Email campaigns from a single multi-tenant workspace.
 
----
-
-## 🌐 Localhost Live Demo
-
-ReachFlow dev server runs locally at:
-
-### 🔗 **[http://localhost:3000](http://localhost:3000)**
-
-### 🔑 Demo Credentials
-- **Email:** `demo@reachflow.app`
-- **Password:** `ReachFlow2024!`
-
----
-
 ## ✨ Core Features
 
 - 📱 **WhatsApp Business Cloud API** — Send templated broadcast messages with variable substitution and status webhooks.
